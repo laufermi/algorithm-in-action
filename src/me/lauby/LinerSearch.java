@@ -1,5 +1,8 @@
 package me.lauby;
 
+import me.lauby.utils.ArrayGenerator;
+import me.lauby.utils.Console;
+
 import java.time.Duration;
 import java.time.Instant;
 
@@ -10,7 +13,7 @@ public class LinerSearch {
     }
 
     public static void main(String[] args) {
-        int[] times = new int[]{100000000, 100000000, 100000000};
+        int[] times = new int[]{10000000, 10000000, 10000000};
         for (int maxLength : times) {
             Integer[] scores = ArrayGenerator.getSortedArray(maxLength);
             Instant startTime = Instant.now();

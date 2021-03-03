@@ -1,4 +1,4 @@
-package me.lauby;
+package me.lauby.utils;
 
 public class TestHelper {
 
