@@ -57,8 +57,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-//        int[] lens = new int[]{1000, 10000};
-        int[] lens = new int[]{10};
+        int[] lens = new int[]{1000, 10000};
         for (int len : lens) {
             Integer[] arr = ArrayGenerator.getRandomArray(len, len);
             Instant startTime = Instant.now();
