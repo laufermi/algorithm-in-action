@@ -1,7 +1,13 @@
 # Algorithm
 
 ## Linear Search
-`LinerSearch.java`
+
+O: n
 
 ## Selection Sort
-`SelectionSort.java`
+
+O: n^2
+
+## Insertion Sort
+
+O: n^2

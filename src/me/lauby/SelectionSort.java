@@ -8,6 +8,8 @@ import me.lauby.utils.TestHelper.SortType;
 import java.time.Duration;
 import java.time.Instant;
 
+import static me.lauby.utils.ArrayUtils.swap;
+
 public class SelectionSort {
     private SelectionSort() {}
 
@@ -48,12 +50,6 @@ public class SelectionSort {
             }
             swap(arr, i, maxIdx);
         }
-    }
-
-    private static <E> void swap(E[] arr, int from, int to) {
-        E tmp = arr[from];
-        arr[from] = arr[to];
-        arr[to] = tmp;
     }
 
     public static void main(String[] args) {
