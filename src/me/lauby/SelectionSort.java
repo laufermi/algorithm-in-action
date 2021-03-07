@@ -1,17 +1,19 @@
 package me.lauby;
 
 import me.lauby.utils.ArrayGenerator;
-import me.lauby.utils.Console;
 import me.lauby.utils.TestHelper;
 import me.lauby.utils.TestHelper.SortType;
 
-import java.time.Duration;
-import java.time.Instant;
+import java.util.function.BiConsumer;
 
 import static me.lauby.utils.ArrayUtils.swap;
 
 public class SelectionSort {
     private SelectionSort() {}
+
+    public static <E extends Comparable<E>> BiConsumer<E[], SortType> get() {
+        return SelectionSort::sort;
+    }
 
     public static <E extends Comparable<E>> void sort(E[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -56,16 +58,7 @@ public class SelectionSort {
         int[] lens = new int[]{1000, 10000};
         for (int len : lens) {
             Integer[] arr = ArrayGenerator.getRandomArray(len, len);
-            Instant startTime = Instant.now();
-            SelectionSort.sort(arr, SortType.DESC);
-            Instant endTime = Instant.now();
-            if (!TestHelper.isSortedArray(arr, SortType.DESC)) {
-                Console.log("[ERROR] Sort failed.");
-                for (int i : arr) {
-                    Console.log("{} ", i);
-                }
-            }
-            Console.log("len: {}, time: {}", arr.length, Duration.between(startTime, endTime).toMillis());
+            TestHelper.testSort(arr, SortType.DESC, SelectionSort.get());
         }
     }
 }
