@@ -31,14 +31,28 @@ public class InsertionSort {
     }
 
     public static <E extends Comparable<E>> void sortFast(E[] arr, SortType sortType) {
-        for (int i = 0; i < arr.length; i++) {
-            E target = arr[i];
-            for (int j = i; j - 1 >= 0; j--) {
-                if (target.compareTo(arr[j - 1]) < 0){
-                    arr[j] = arr[j - 1];
-                } else {
-                    arr[j] = target;
-                    break;
+        if (SortType.DESC == sortType) {
+            for (int i = arr.length - 1; i >= 0; i--) {
+                E target = arr[i];
+                for (int j = i; j + 1 < arr.length; j++) {
+                    if (target.compareTo(arr[j + 1]) < 0) {
+                        arr[j] = arr[j + 1];
+                    } else {
+                        arr[j + 1] = target;
+                        break;
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < arr.length; i++) {
+                E target = arr[i];
+                for (int j = i; j - 1 >= 0; j--) {
+                    if (target.compareTo(arr[j - 1]) < 0) {
+                        arr[j] = arr[j - 1];
+                    } else {
+                        arr[j] = target;
+                        break;
+                    }
                 }
             }
         }
@@ -49,9 +63,9 @@ public class InsertionSort {
         for (int len : lens) {
             Integer[] arr = ArrayGenerator.getRandomArray(len, len);
             Instant startTime = Instant.now();
-            InsertionSort.sort(arr, SortType.ASC);
+            InsertionSort.sortFast(arr, SortType.DESC);
             Instant endTime = Instant.now();
-            if (!TestHelper.isSortedArray(arr, SortType.ASC)) {
+            if (!TestHelper.isSortedArray(arr, SortType.DESC)) {
                 Console.log("[ERROR] Sort failed.");
                 for (int i : arr) {
                     Console.log("{} ", i);
